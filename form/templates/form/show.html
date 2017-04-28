@@ -1,0 +1,7 @@
+{% if questions %}
+    {% for question in questions %}
+<p><a href="options/ {{ question.id }}">{{ question }}</a></p>
+    {% endfor %}
+{% else %}
+    <p>No Questions Fetched!</p>
+{% endif %}

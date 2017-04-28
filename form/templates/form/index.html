@@ -1,0 +1,39 @@
+<script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+<body>
+<script>
+$(document).ready(function(){
+
+    id_num = 5;
+    form_count = Number($("[name=extra_field_count]").val());
+    alert(form_count);
+    $("#add-another").click(function() {
+    form_count++;
+    label_elem = $('<label>Option' + id_num + ': </label>');
+    element = $('<input type="text"/>');
+    element.attr('name', 'option' + id_num);
+
+
+    $("#forms").append(label_elem);
+    $("#forms").append(element).append('<br><br>');
+    $("#id_correct_opt").append('<option value='+id_num+'>'+ id_num+'</option>')
+
+    $("[name=extra_field_count]").val(form_count);
+
+    id_num++;
+    })
+})
+
+</script>
+
+<form action="show/" method="POST">
+    {% csrf_token %}
+<div id="forms">
+    {{ form.as_p }}
+</div>
+    <input type="submit" value="Submit">
+</form>
+<button id="add-another">Add Another Option</button>
+</body>
